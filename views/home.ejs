@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+    <title>Blog with Kumar &#128511;</title>
+  </head>
+  <body class="temp">
+    <%- include('./partials/navbar.ejs') %>
+
+    <div
+      class="row row-cols-1 row-cols-md-4 g-3 mt-5 ms-auto me-auto"
+      style="width: 95vw"
+    >
+      <% allBlog.forEach(blog => { %>
+      <div class="card bg-gradient ms-auto me-auto blogcard">
+        <img
+          src="<%= blog.coverImageURL %>"
+          class="card-img-top mt-2"
+          alt="Thumbnail"
+        />
+        <div class="card-body" style="text-align: center">
+          <h5 class="card-title"><%= blog.title.slice(0,22)+"..." %></h5>
+          <p class="card-text"><%= blog.content.slice(0,100)+"..." %></p>
+          <a href="/blog/<%= blog._id%>" class="btn">Read more</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <%- include('./partials/script.ejs') %>
+  </body>
+</html>
